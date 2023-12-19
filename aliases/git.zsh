@@ -16,18 +16,19 @@ function commit {
 }
 
 function cbranch {
-	branch = $1
-	git checkout branch
+	git checkout $1
 	if [ $? -eq 0 ]; then
 		echo "checkout $1"
 	else
-		echo "Branch não existe, deseja criar y/n"
-		read "Do you wish to install this program? " yn
-		case $yn in
-        	[Yy]* ) echo "yes";;
-        	[Nn]* ) exit;;
-        	* ) exit;;
-		esac
+		printf '\nBranch não foi encontrada, gostaria de criar-la (s/n)? '
+		old_stty_cfg=$(stty -g)
+		stty raw -echo ; answer=$(head -c 1) ; stty $old_stty_cfg # Careful playing with stty
+		if [ "$answer" != "${answer#[Ss]}" ];then
+			echo "\n"
+		    git checkout -b $1
+		else
+		    echo "Branch não criada"
+		fi
 	
 	fi
 }
