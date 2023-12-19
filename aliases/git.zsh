@@ -5,14 +5,15 @@ alias g-l='git log'
 alias g-commit='commit'
 alias g-a='git add'
 alias g-ac='git add .'
-alias g-wip='g-ac && g-c "wip"' 
+alias g-wip='g-ac && g-commit "wip"' 
+alias g-branch='cbranch'
 
 
 
 # Funtions
 
 function commit {
-	gaa && gc $1
+	gaa && git commit -m $1
 }
 
 function cbranch {
