@@ -1,11 +1,11 @@
 
 # Aliases
-alias gs='git status'
-alias gl='git log'
-alias gc='git commit -m'
-alias ga='git add'
-alias gaa='git add .'
-alias g-wip='gaa && gc "wip"' 
+alias g-s='git status'
+alias g-l='git log'
+alias g-commit='commit'
+alias g-a='git add'
+alias g-ac='git add .'
+alias g-wip='g-ac && g-c "wip"' 
 
 
 
